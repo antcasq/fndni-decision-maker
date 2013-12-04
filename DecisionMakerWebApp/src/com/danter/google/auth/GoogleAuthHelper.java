@@ -3,6 +3,7 @@ package com.danter.google.auth;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.Properties;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
@@ -24,18 +25,32 @@ import com.google.api.client.json.jackson.JacksonFactory;
  */
 public final class GoogleAuthHelper {
 
+	private static final String PROP_CLIENT_ID = "client.id";
+	private static final String PROP_CLIENT_SECRET = "client.secret";
+	private static final String PROP_CALLBACK_URI = "callback.uri";
+	private static Properties props = new Properties();
+	static {
+		try {
+			props.load(com.danter.google.auth.GoogleAuthHelper.class
+					.getResourceAsStream("oauth.properties"));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	/**
 	 * Please provide a value for the CLIENT_ID constant before proceeding, set
 	 * this up at https://code.google.com/apis/console/
 	 */
 	// TODO read from properties file
-	private static final String CLIENT_ID = "1078920357079.apps.googleusercontent.com";
+	private static final String CLIENT_ID = props.getProperty(PROP_CLIENT_ID);
 	/**
 	 * Please provide a value for the CLIENT_SECRET constant before proceeding,
 	 * set this up at https://code.google.com/apis/console/
 	 */
 	// TODO read from properties file
-	private static final String CLIENT_SECRET = "VVVZi2cZ4s6j4vHvr5k0P4n3";
+	private static final String CLIENT_SECRET = props
+			.getProperty(PROP_CLIENT_SECRET);
 
 	/**
 	 * Callback URI that google will redirect to after successful authentication
@@ -43,7 +58,8 @@ public final class GoogleAuthHelper {
 	// private static final String CALLBACK_URI =
 	// "http://localhost:8080/OAuth2v1/index.jsp";
 	// TODO read from properties file
-	private static final String CALLBACK_URI = "http://localhost:8080/DecisionMakerWebApp/";
+	private static final String CALLBACK_URI = props
+			.getProperty(PROP_CALLBACK_URI);
 
 	// start google authentication constants
 	// private static final Iterable<String> SCOPE = Arrays
@@ -128,11 +144,11 @@ public final class GoogleAuthHelper {
 	}
 
 	public static String parseUsername(String jsonIdentity) {
-		String[] pairs = jsonIdentity.replaceAll("\"", "")
-				.replaceAll(" ", "").replaceAll("\n", "").replaceAll("[{]", "")
+		String[] pairs = jsonIdentity.replaceAll("\"", "").replaceAll(" ", "")
+				.replaceAll("\n", "").replaceAll("[{]", "")
 				.replaceAll("[}]", "").split(",");
-		
-		for (String pair: pairs) {
+
+		for (String pair : pairs) {
 			String name = pair.split(":")[0];
 			String value = pair.split(":")[1];
 			if ("email".equals(name)) {
@@ -140,7 +156,7 @@ public final class GoogleAuthHelper {
 			}
 		}
 
-		return "ajsco@iscte.pt";
+		return null;
 	}
 
 }
