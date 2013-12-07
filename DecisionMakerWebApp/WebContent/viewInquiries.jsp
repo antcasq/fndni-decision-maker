@@ -53,7 +53,7 @@
 					<td>${userInquiryRegistry.inquiry.anonymous}</td>
 					<td>${userInquiryRegistry.inquiry.resultPublished}</td>
 					<td>&nbsp; <c:if
-							test="${userBean.isAdmin && userInquiryRegistry.inquiry.canViewStatus}">
+							test="${userInquiryRegistry.inquiry.canViewStatus}">
 							<a
 								href="DecisionMakerServlet?method=<%=DecisionMakerServlet.M_VIEW_INQUIRY_STATUS%>
 								&inquiryCode=${userInquiryRegistry.inquiry.inquiryCode}">
