@@ -15,12 +15,14 @@
 <html lang="${language}">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="main.css" rel="stylesheet" type="text/css" />
 <title><fmt:message key="title.system.name" /></title>
 </head>
 <body>
+	
 	<jsp:include page="actionNavbar.jsp" />
-
-	<table border="1">
+<div id="body_content">
+	<table cellpadding="0" cellspacing="0">
 		<thead>
 			<tr>
 				<th><fmt:message key="label.inquiry.inquiryCode" /></th>
@@ -79,5 +81,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
+</div>
+<jsp:include page="footer.jsp" />
 </body>
 </html>

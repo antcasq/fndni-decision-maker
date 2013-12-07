@@ -18,26 +18,50 @@
 <title><fmt:message key="title.system.name" /></title>
 <style>
 body {
-	font-family: Sans-Serif;
-	margin: 1em;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .oauthDemo a {
-	display: block;
-	border-style: solid;
-	border-color: #bbb #888 #666 #aaa;
-	border-width: 1px 2px 2px 1px;
-	background: #ccc;
-	color: #333;
-	line-height: 2;
-	text-align: center;
-	text-decoration: none;
-	font-weight: 900;
-	width: 13em;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	background-color:#83ae5c;
+	font-weight:bold; 
+	font-size:11px; 
+	color:#333 !important; 
+	cursor: pointer;
+	text-decoration:none;
+	padding:4px;
+	border-bottom: 2px solid #8c8a80 !important;
+	border-right: 2px solid #8c8a80;
+	border-top: 2px solid #f8f7f0;
+	border-left: 2px solid #f8f7f0;
+	margin: 10px;
+}
+
+.oauthDemo:focus:hover {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	background-color:#83ae5c;
+	font-weight:bold; 
+	font-size:11px; 
+	color:#333 !important; 
+	cursor: pointer;
+	text-decoration:none;
+	padding:4px;
+	border-bottom: 2px solid #f8f7f0 !important;
+	border-right: 2px solid #f8f7f0;
+	border-top: 2px solid #8c8a80;
+	border-left: 2px solid #8c8a80;
+	margin: 10px;
 }
 
 .oauthDemo pre {
 	background: #ccc;
+}
+#container {
+	margin: 100px auto 0 auto;
+	background: #ffffff;
+	width: 40%;
+	border: 1px solid #113344;
+	padding: 0px 0px 20px 0px;
 }
 
 .oauthDemo a:active {
@@ -50,11 +74,28 @@ body {
 	padding: .5em;
 	background-color: #F9AD81;
 	color: #333;
+	margin: 10px
 }
+#top {
+	height: 78px;
+	position: relative;
+	background-color: #424242;
+}
+
+#top #logo {
+	padding-top: 5px;
+	padding-left: 25px;
+	margin: 0;
+}
+
 </style>
 </head>
 <body>
+<div id="container">
 
+<div id="top">
+	<div id="logo"><img src="images/logo-system.png" /></div>
+</div>
 	<%-- Show error messages --%>
 	<%
 		String message = request.getParameter("message");
@@ -88,8 +129,8 @@ body {
 					|| request.getParameter("state") == null) {
 				// initial visit to the page
 		%>
-		<br /> <br /> <br /> <a href="<%=helper.buildLoginUrl()%>"> <fmt:message
-				key="link.login" /></a>
+		<br /><br /> <div align="center"><a href="<%=helper.buildLoginUrl()%>"> <fmt:message
+				key="link.login" /></a></div><br />
 		<%
 			/*
 				 * set the secure state token in session to be able to track what we sent to google
@@ -125,5 +166,6 @@ body {
 			}
 		%>
 	</div>
+</div>
 </body>
 </html>

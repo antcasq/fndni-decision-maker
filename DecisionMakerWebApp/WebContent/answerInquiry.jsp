@@ -15,19 +15,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><fmt:message key="title.system.name" /></title>
+<link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<jsp:include page="actionNavbar.jsp" />
 
+	<jsp:include page="actionNavbar.jsp" />
+<div id="body_content" style="padding-left: 100px;">
 	<c:if test="${userBean.hasPendingInquiries}">
-		<h1>
-			<fmt:message key="title.what.do.you.think" />
-		</h1>
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+				<td style="padding: 10px;"><img src="images/logo-iscte.png" /></td>
+				<td style="padding: 10px;"><fmt:message key='label.inquiry.instructions' /></td>
+			</tr>
+		</table>
+		<br />
+		
 		<c:set var="userInquiryRegistry"
 			value="${userBean.oldestPendingInquiry}" scope="page" />
-				${userInquiryRegistry.inquiry.inquiryCode}
-				-
-				${userInquiryRegistry.inquiry.name}
+<%-- 				${userInquiryRegistry.inquiry.inquiryCode} --%>
+<!-- 				- -->
+<%-- 				${userInquiryRegistry.inquiry.name} --%>
 		<form action="DecisionMakerServlet" method="post">
 			<input type="hidden" name="method" value="answerInquiry"> <input
 				type="hidden" name="inquiryCode"
@@ -35,18 +42,26 @@
 
 			<c:forEach var="inquiryQuestion"
 				items="${userInquiryRegistry.inquiry.inquiryQuestions}">
-				<img src="images/${inquiryQuestion.imageUrl}" />
+<%-- 				<img src="images/${inquiryQuestion.imageUrl}" /> --%>
 				<h2>${inquiryQuestion.name}</h2>
+				
+				<table cellpadding="0" cellspacing="0">
 				<c:forEach var="inquiryQuestionPossibleAnswer"
 					items="${inquiryQuestion.inquiryQuestionPossibleAnswersSorted}">
-					<input type="radio" name="answer${inquiryQuestion.id}"
-						id="id${inquiryQuestionPossibleAnswer.id}"
-						value="${inquiryQuestionPossibleAnswer.id}" />
-					<label for="id${inquiryQuestionPossibleAnswer.id}"><img
-						src="images/${inquiryQuestionPossibleAnswer.imageUrl}">
-						${inquiryQuestionPossibleAnswer.name}</label>
-					<br />
+					<tr>
+						<td>
+						<input type="radio" name="answer${inquiryQuestion.id}"
+							id="id${inquiryQuestionPossibleAnswer.id}"
+							value="${inquiryQuestionPossibleAnswer.id}" />
+						</td>
+						<td>
+						<label for="id${inquiryQuestionPossibleAnswer.id}"><img
+							src="images/${inquiryQuestionPossibleAnswer.imageUrl}">
+							${inquiryQuestionPossibleAnswer.name}</label>
+						</td>
+					</tr>
 				</c:forEach>
+				</table>
 			</c:forEach>
 			<br />
 			<%-- 			<input type="reset" --%>
@@ -56,6 +71,8 @@
 	</c:if>
 
 	<c:if test="${!userBean.hasPendingInquiries}">
-		Actualmente não possui inquéritos por responder.
+		<fmt:message key='message.info.no.pending.inquiries' />
 	</c:if>
+</div>
+<jsp:include page="footer.jsp" />
 </html>

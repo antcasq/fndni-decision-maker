@@ -15,17 +15,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><fmt:message key="title.system.name" /></title>
+<link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<jsp:include page="actionNavbar.jsp" />
-
+<div id="body_content">
 	${inquiryResultSummary.inquiry.inquiryCode} -
 	${inquiryResultSummary.inquiry.name}
 	<c:forEach var="inquiryResultQuestion"
 		items="${inquiryResultSummary.inquiryResultQuestions}">
 		<h2>${inquiryResultQuestion.question}</h2>
 		<fmt:message key="label.inquiry.answer.votes" />: ${inquiryResultQuestion.votes}
-		<table border="1">
+		<table cellpadding="0" cellspacing="0">
 			<thead>
 				<tr>
 					<th><fmt:message key="label.inquiry.answer" /></th>
@@ -45,5 +46,7 @@
 			</tbody>
 		</table>
 	</c:forEach>
+</div>
+<jsp:include page="footer.jsp" />
 </body>
 </html>

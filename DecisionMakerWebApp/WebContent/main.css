@@ -1,0 +1,120 @@
+body {
+	font: 11pt Arial, Helvetica, sans-serif;
+	text-align: left;
+	margin: 0px;
+	background-color: #424242;
+}
+#top {
+	height: 78px;
+	position: relative;
+	background-color: #424242;
+}
+
+#top #logo {
+	padding-top: 25px;
+	padding-left: 25px;
+	margin: 0;
+}
+#top #user {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	font-size: 0.85em;
+	margin: 0;
+	padding-bottom: 10px;
+	padding-top: 2px;
+	padding-right: 50px;
+	color: #ffffff;
+	font-weight: normal;
+}
+
+#navtop {
+	background-color: #424242;
+	border-bottom: 12px solid #83ae5c;
+	float: right;
+	width: 100%;
+	font-size: 12px;
+	padding-top: 0.5em;
+}
+
+#navtop ul {
+	list-style: none;
+	padding-right: 50px;
+}
+#navtop ul li {
+	margin: 1px;
+}
+#navtop li a {
+	margin-left: 2px;
+	padding:8px 8px 8px 8px;
+	font-weight:bold;
+	font-size: 12px;
+	text-decoration:none;
+	background-color:#5b5b5b;
+	display: block;
+	color:#ffffff;
+	float: right;
+}
+
+#navtop li a:hover{
+	background-color:#a2c970;
+}
+
+.selected{
+	background-color:#83ae5c !important;
+}
+
+#footer {
+	background-color:#5b5b5b;
+	text-align: center;
+	padding: 1em 1em;
+	clear: both;
+	height: 1%;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #ffffff;
+}
+
+.errorInfo {
+	padding: .5em;
+	background-color: red;
+	color: white;
+}
+
+#body_content{
+	background-color: #ffffff;
+	padding-top: 80px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+
+#body_content th {
+	background-color: ffff;
+	border-bottom: 3px solid #e2e2e2; ;
+	padding-right: 15px;
+}
+
+#body_content td {
+	background-color: ffff;
+	border-bottom: solid 1px #e2e2e2;
+	padding-right: 15px;
+}
+
+input[type="button"],input[type="submit"] {
+	color:#ffffff; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px; 
+	font-weight:bold; 
+	background:#83ae5c; 
+	padding:2px;
+}
+
+h1 {
+	font: 14pt Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+h2 {
+	font: 13pt Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}

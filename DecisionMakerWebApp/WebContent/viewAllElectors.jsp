@@ -15,11 +15,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><fmt:message key="title.system.name" /></title>
+<link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+
 	<jsp:include page="actionNavbar.jsp" />
 
-	<table border="1">
+<div id="body_content">
+	<table cellpadding="0" cellspacing="0">
 		<thead>
 			<tr>
 				<th><fmt:message key="label.user.name" /></th>
@@ -35,5 +38,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
+</div>
+<jsp:include page="footer.jsp" />
 </body>
 </html>
