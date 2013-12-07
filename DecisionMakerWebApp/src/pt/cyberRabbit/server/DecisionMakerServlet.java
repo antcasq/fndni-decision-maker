@@ -2,6 +2,8 @@ package pt.cyberRabbit.server;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -200,6 +202,13 @@ public class DecisionMakerServlet extends HttpServlet {
 		try {
 			final List<UserDTO> users = DecisionMakerFacade
 					.getAllUsers(username);
+			Collections.sort(users,new Comparator<UserDTO>() {
+
+				@Override
+				public int compare(UserDTO o1, UserDTO o2) {
+					return o1.getName().compareTo(o2.getName());
+				}
+			});
 			request.setAttribute("users", users);
 
 			request.getRequestDispatcher(M_VIEW_ALL_ELECTORS + ".jsp").forward(

@@ -27,6 +27,7 @@
 			<tr>
 				<th><fmt:message key="label.user.name" /></th>
 				<th><fmt:message key="label.workingUnit.name" /></th>
+				<th><fmt:message key="label.workingUnit.acronym" /></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,6 +35,7 @@
 				<tr>
 					<td>${user.name}</td>
 					<td>${user.workingUnit.name}</td>
+					<td>${user.workingUnit.acronym}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
