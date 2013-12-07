@@ -19,30 +19,93 @@
 </head>
 <body>
 	<jsp:include page="actionNavbar.jsp" />
-<div id="body_content">
-	<table cellpadding="0" cellspacing="0">
-		<thead>
-			<tr>
-				<th><fmt:message key="label.user.name" /></th>
-				<th><fmt:message key="label.workingUnit.name" /></th>
-				<th><fmt:message key="label.inquiry.submited" /></th>
-				<th><fmt:message key="label.inquiry.submitDate" /></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="elector" items="${electors}">
+
+	<div id="body_content">
+		<table cellpadding="0" cellspacing="0">
+			<thead>
 				<tr>
-					<td>${elector.user.name}</td>
-					<td>${elector.user.workingUnit.name}</td>
-					<td>${elector.userInquiryRegistry.isSubmited}</td>
-					<td><fmt:formatDate
-							value="${elector.userInquiryRegistry.submitDate}"
-							pattern="yyyy-MM-dd HH:mm" /></td>
+					<th><fmt:message key="label.answered" /></th>
+					<th><fmt:message key="label.notAnswered" /></th>
+					<th><fmt:message key="label.total" /></th>
+					<th><fmt:message key="label.answered.percentage" /></th>
+					<th><fmt:message key="label.notAnswered.percentage" /></th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-</div>
-<jsp:include page="footer.jsp" />
+			</thead>
+			<tbody>
+				<tr>
+					<td>${inquiryStatus.numberAnswers}</td>
+					<td>${inquiryStatus.numberNotAnswered}</td>
+					<td>${inquiryStatus.numberElectors}</td>
+					<td>${inquiryStatus.haveAnsweredPercentage}%</td>
+					<td>${inquiryStatus.haveNotAnsweredPercentage}%</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<hr />
+	<hr />
+	<hr />
+
+	<div id="body_content">
+		<table cellpadding="0" cellspacing="0">
+			<thead>
+				<tr>
+					<th><fmt:message key="label.workingUnit.acronym" /></th>
+					<th><fmt:message key="label.workingUnit.name" /></th>
+					<th><fmt:message key="label.answered" /></th>
+					<th><fmt:message key="label.notAnswered" /></th>
+					<th><fmt:message key="label.total" /></th>
+					<th><fmt:message key="label.answered.percentage" /></th>
+					<th><fmt:message key="label.notAnswered.percentage" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="workingUnitAnswerStatus"
+					items="${inquiryStatus.workingUnitsAnswerStatus}">
+					<tr>
+						<td>${workingUnitAnswerStatus.workingUnit.acronym}</td>
+						<td>${workingUnitAnswerStatus.workingUnit.name}</td>
+						<td>${workingUnitAnswerStatus.numberAnswers}</td>
+						<td>${workingUnitAnswerStatus.numberNotAnswered}</td>
+						<td>${workingUnitAnswerStatus.numberElectors}</td>
+						<td>${workingUnitAnswerStatus.haveAnsweredPercentage}%</td>
+						<td>${workingUnitAnswerStatus.haveNotAnsweredPercentage}%</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+
+
+	<hr />
+	<hr />
+	<hr />
+
+	<div id="body_content">
+		<table cellpadding="0" cellspacing="0">
+			<thead>
+				<tr>
+					<th><fmt:message key="label.user.name" /></th>
+					<th><fmt:message key="label.workingUnit.name" /></th>
+					<th><fmt:message key="label.inquiry.submited" /></th>
+					<th><fmt:message key="label.inquiry.submitDate" /></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="elector" items="${inquiryStatus.electors}">
+					<tr>
+						<td>${elector.user.name}</td>
+						<td>${elector.user.workingUnit.name}</td>
+						<td>${elector.userInquiryRegistry.isSubmited}</td>
+						<td><fmt:formatDate
+								value="${elector.userInquiryRegistry.submitDate}"
+								pattern="yyyy-MM-dd HH:mm" /></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

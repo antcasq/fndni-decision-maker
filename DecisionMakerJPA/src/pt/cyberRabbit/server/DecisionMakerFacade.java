@@ -7,6 +7,7 @@ import pt.cyberRabbit.server.domain.User;
 import pt.cyberRabbit.shared.domain.exceptions.DomainException;
 import pt.cyberRabbit.shared.dto.ElectorDTO;
 import pt.cyberRabbit.shared.dto.InquiryResultSummaryDTO;
+import pt.cyberRabbit.shared.dto.InquiryStatusDTO;
 import pt.cyberRabbit.shared.dto.UserDTO;
 
 public class DecisionMakerFacade {
@@ -81,6 +82,36 @@ public class DecisionMakerFacade {
 			final List<ElectorDTO> electors = inquiry.getElectors();
 			if (electors != null) {
 				return electors;
+			}
+			// } catch (Throwable t) {
+			// t.printStackTrace();
+		} finally {
+			ServerHelper.getInstance().releaseResources();
+		}
+		return null;
+	}
+
+	public static InquiryStatusDTO getInquiryStatus(final String username,
+			final String inquiryCode) {
+		if (username == null) {
+			throw new IllegalArgumentException("username.required");
+		}
+
+		if (inquiryCode == null) {
+			throw new IllegalArgumentException("inquiryCode.required");
+		}
+
+		try {
+			ServerHelper.init(true);
+
+			final Inquiry inquiry = Inquiry.findByInquiryCode(inquiryCode);
+			if (inquiry == null) {
+				return null;
+			}
+
+			final InquiryStatusDTO inquiryStatus = inquiry.getInquiryStatus();
+			if (inquiryStatus != null) {
+				return inquiryStatus;
 			}
 			// } catch (Throwable t) {
 			// t.printStackTrace();

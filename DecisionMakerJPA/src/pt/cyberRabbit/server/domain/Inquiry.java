@@ -23,6 +23,7 @@ import pt.cyberRabbit.shared.dto.ElectorDTO;
 import pt.cyberRabbit.shared.dto.InquiryDTO;
 import pt.cyberRabbit.shared.dto.InquiryQuestionDTO;
 import pt.cyberRabbit.shared.dto.InquiryResultSummaryDTO;
+import pt.cyberRabbit.shared.dto.InquiryStatusDTO;
 import pt.cyberRabbit.shared.dto.UserInquiryDTO;
 import pt.cyberRabbit.shared.util.Pair;
 
@@ -262,6 +263,16 @@ public class Inquiry {
 		}
 	}
 
+	public boolean isOpen() {
+		final Date now = new Date();
+		if (now.after(getBeginDate()) && now.before(getEndDate())
+				&& !Boolean.TRUE.equals(getResultPublished())) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public List<ElectorDTO> getElectors() {
 		List<UserInquiryRegistry> userInquiryRegistrys = UserInquiryRegistry
 				.findAllByInquiryCode(getInquiryCode());
@@ -275,14 +286,8 @@ public class Inquiry {
 		return electors;
 	}
 
-	public boolean isOpen() {
-		final Date now = new Date();
-		if (now.after(getBeginDate()) && now.before(getEndDate())
-				&& !Boolean.TRUE.equals(getResultPublished())) {
-			return true;
-		}
-
-		return false;
+	public InquiryStatusDTO getInquiryStatus() {
+		return new InquiryStatusDTO(this.buildDTO(), getElectors());
 	}
 
 	public InquiryResultSummaryDTO getInquiryResult() {
@@ -301,8 +306,8 @@ public class Inquiry {
 			userInquiriesDTO.add(userInquiry.buildDTO());
 		}
 
-		InquiryResultSummaryDTO result = new InquiryResultSummaryDTO(buildDTO(),
-				userInquiriesDTO);
+		InquiryResultSummaryDTO result = new InquiryResultSummaryDTO(
+				buildDTO(), userInquiriesDTO);
 		return result;
 	}
 

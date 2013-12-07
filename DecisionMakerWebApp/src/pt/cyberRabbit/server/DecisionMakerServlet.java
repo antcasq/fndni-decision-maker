@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pt.cyberRabbit.shared.domain.exceptions.DomainException;
-import pt.cyberRabbit.shared.dto.ElectorDTO;
 import pt.cyberRabbit.shared.dto.InquiryResultSummaryDTO;
+import pt.cyberRabbit.shared.dto.InquiryStatusDTO;
 import pt.cyberRabbit.shared.dto.UserDTO;
 
 /**
@@ -172,9 +172,9 @@ public class DecisionMakerServlet extends HttpServlet {
 		final String inquiryCode = request.getParameter("inquiryCode");
 
 		try {
-			final List<ElectorDTO> electors = DecisionMakerFacade
-					.getAllElectors(username, inquiryCode);
-			request.setAttribute("electors", electors);
+			final InquiryStatusDTO inquiryStatus = DecisionMakerFacade
+					.getInquiryStatus(username, inquiryCode);
+			request.setAttribute("inquiryStatus", inquiryStatus);
 
 			request.getRequestDispatcher(M_VIEW_INQUIRY_STATUS + ".jsp")
 					.forward(request, response);
