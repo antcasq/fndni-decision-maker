@@ -17,3 +17,6 @@ http://www.dummies.com/how-to/content/how-to-create-a-radio-button-in-an-html5-f
 Ver
 http://aws.amazon.com/ec2/pricing/
 https://cloud.google.com/pricing/compute-engine
+
+TODO
+- Refactorizar a página da afluência para ter 3 tabs: Resumo; Unidades orgânica; Eleitores
