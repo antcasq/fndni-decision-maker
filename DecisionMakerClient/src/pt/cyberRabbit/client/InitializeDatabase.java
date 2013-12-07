@@ -283,20 +283,20 @@ public class InitializeDatabase {
 		inquiry.openInquiry();
 	}
 
-	private static void insertWorkingUnit() {
-		WorkingUnit.create("SI", "Serviços Informática", "SI");
-		WorkingUnit.create("UD", "Unidade Desenvolvimento", "SI/UD");
-		WorkingUnit.create("NAU", "Nucleo de Apoio ao Utilizador", "SI/NAU");
+	private static void insertWorkingUnit() throws IOException {
+		List<String> lines = FileUtils.readLines(new File("units.txt"));
+		for (String line : lines) {
+			String[] parts = line.split(",");
+
+			int i = 0;
+			String hierarchy = parts[i++];
+			String name = parts[i++];
+			String acronym = parts[i++];
+			WorkingUnit.create(acronym, name, hierarchy);
+		}
 	}
 
 	private static void insertUser() throws IOException {
-		// User.create("ajsco@iscte.pt", "António Casqueiro",
-		// "Antonio.Casqueiro@iscte.pt", Role.ADMIN, "UD");
-		// User.create("hmcb@iscte.pt", "Henrique Borges",
-		// "Henrique.Borges@iscte.pt", Role.ADMIN, "NAU");
-		// User.create("rgbsa@iscte.pt", "Rita Sousa", "Rita.Sousa@iscte.pt",
-		// Role.USER, "UD");
-
 		List<String> lines = FileUtils.readLines(new File("users.txt"));
 		for (String line : lines) {
 			String[] parts = line.split(",");
