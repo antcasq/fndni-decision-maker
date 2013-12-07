@@ -19,34 +19,58 @@
 </head>
 <body>
 	<jsp:include page="actionNavbar.jsp" />
-<div id="body_content">
-	${inquiryResultSummary.inquiry.inquiryCode} -
-	${inquiryResultSummary.inquiry.name}
-	<c:forEach var="inquiryResultQuestion"
-		items="${inquiryResultSummary.inquiryResultQuestions}">
-		<h2>${inquiryResultQuestion.question}</h2>
-		<fmt:message key="label.inquiry.answer.votes" />: ${inquiryResultQuestion.votes}
+
+	<div id="body_content">
+		<h1>${inquiryResultSummary.inquiry.inquiryCode}-
+			${inquiryResultSummary.inquiry.name}</h1>
+
 		<table cellpadding="0" cellspacing="0">
 			<thead>
 				<tr>
-					<th><fmt:message key="label.inquiry.answer" /></th>
-					<th><fmt:message key="label.inquiry.answer.votes" /></th>
-					<th><fmt:message key="label.inquiry.answer.percentage" /></th>
+					<th><fmt:message key="label.answered" /></th>
+					<th><fmt:message key="label.notAnswered" /></th>
+					<th><fmt:message key="label.total" /></th>
+					<th><fmt:message key="label.answered.percentage" /></th>
+					<th><fmt:message key="label.notAnswered.percentage" /></th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="inquiryResultAnswer"
-					items="${inquiryResultQuestion.inquiryResultAnswers}">
-					<tr>
-						<td>${inquiryResultAnswer.answer}</td>
-						<td>${inquiryResultAnswer.votes}</td>
-						<td>${inquiryResultAnswer.percentage}</td>
-					</tr>
-				</c:forEach>
+				<tr>
+					<td>${inquiryStatus.numberAnswers}</td>
+					<td>${inquiryStatus.numberNotAnswered}</td>
+					<td>${inquiryStatus.numberElectors}</td>
+					<td>${inquiryStatus.haveAnsweredPercentage}%</td>
+					<td>${inquiryStatus.haveNotAnsweredPercentage}%</td>
+				</tr>
 			</tbody>
 		</table>
-	</c:forEach>
-</div>
-<jsp:include page="footer.jsp" />
+		<br />
+		<c:forEach var="inquiryResultQuestion"
+			items="${inquiryResultSummary.inquiryResultQuestions}">
+			<h2>${inquiryResultQuestion.question}</h2>
+			<table cellpadding="0" cellspacing="0">
+				<thead>
+					<tr>
+						<th><fmt:message key="label.inquiry.answer" /></th>
+						<th><fmt:message key="label.inquiry.answer.votes" /></th>
+						<%-- 						<th><fmt:message key="label.inquiry.answer.percentage" /></th> --%>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="inquiryResultAnswer"
+						items="${inquiryResultQuestion.inquiryResultAnswers}">
+						<tr>
+							<td>${inquiryResultAnswer.answer}</td>
+							<td>${inquiryResultAnswer.votes}</td>
+							<%-- 							<td>${inquiryResultAnswer.percentage}</td> --%>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<br />
+			<fmt:message key="label.inquiry.answer.votes" />: ${inquiryResultQuestion.votes}
+		</c:forEach>
+	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

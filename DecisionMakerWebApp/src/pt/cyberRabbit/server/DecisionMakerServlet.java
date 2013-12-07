@@ -154,6 +154,10 @@ public class DecisionMakerServlet extends HttpServlet {
 		final String inquiryCode = request.getParameter("inquiryCode");
 
 		try {
+			final InquiryStatusDTO inquiryStatus = DecisionMakerFacade
+					.getInquiryStatus(username, inquiryCode);
+			request.setAttribute("inquiryStatus", inquiryStatus);
+
 			final InquiryResultSummaryDTO inquiryResultSummary = DecisionMakerFacade
 					.getInquiryResult(username, inquiryCode);
 			request.setAttribute("inquiryResultSummary", inquiryResultSummary);
@@ -182,7 +186,6 @@ public class DecisionMakerServlet extends HttpServlet {
 			request.setAttribute("message", e.getMessage());
 			forwardToDefaultView(request, response);
 		}
-
 	}
 
 	private void viewInquiries(HttpServletRequest request,
