@@ -264,10 +264,6 @@ public class DecisionMakerServlet extends HttpServlet {
 		final String username = (String) request.getSession().getAttribute(
 				"authUser");
 		return username;
-
-		// return "rgbsa@iscte.pt";
-		// return "ajsco@iscte.pt";
-		// return "hmcb@iscte.pt";
 	}
 
 	private boolean isAuthenticated(HttpServletRequest request) {

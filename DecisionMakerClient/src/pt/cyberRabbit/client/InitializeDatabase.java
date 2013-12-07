@@ -136,7 +136,7 @@ public class InitializeDatabase {
 			final String inquiryCode = "0001";
 			final String answer = "Mickey";
 
-			User user = User.findByUsername("ajsco@iscte.pt");
+			User user = User.findByUsername("ajsco@domain.pt");
 
 			Inquiry inquiry = Inquiry.findByInquiryCode(inquiryCode);
 			List<Long> answerIds = new ArrayList<Long>();
@@ -154,7 +154,7 @@ public class InitializeDatabase {
 		}
 
 		{
-			// User user = User.findByUsername("hmcb@iscte.pt");
+			// User user = User.findByUsername("hmcb@domain.pt");
 
 			// Hasn't responded yet
 		}
@@ -163,7 +163,7 @@ public class InitializeDatabase {
 			final String inquiryCode = "0001";
 			final String answer = "Minnie";
 
-			User user = User.findByUsername("rgbsa@iscte.pt");
+			User user = User.findByUsername("rgbsa@domain.pt");
 
 			Inquiry inquiry = Inquiry.findByInquiryCode(inquiryCode);
 			List<Long> answerIds = new ArrayList<Long>();
@@ -186,7 +186,7 @@ public class InitializeDatabase {
 			final String inquiryCode = "0002";
 			final String answer = "Voto branco";
 
-			User user = User.findByUsername("ajsco@iscte.pt");
+			User user = User.findByUsername("ajsco@domain.pt");
 
 			Inquiry inquiry = Inquiry.findByInquiryCode(inquiryCode);
 			List<Long> answerIds = new ArrayList<Long>();
@@ -207,7 +207,7 @@ public class InitializeDatabase {
 			final String inquiryCode = "0002";
 			final String answer = "Voto nulo";
 
-			User user = User.findByUsername("hmcb@iscte.pt");
+			User user = User.findByUsername("hmcb@domain.pt");
 
 			Inquiry inquiry = Inquiry.findByInquiryCode(inquiryCode);
 			List<Long> answerIds = new ArrayList<Long>();
@@ -225,7 +225,7 @@ public class InitializeDatabase {
 		}
 
 		{
-			// User user = User.findByUsername("rgbsa@iscte.pt");
+			// User user = User.findByUsername("rgbsa@domain.pt");
 
 			// Hasn't responded yet
 		}
