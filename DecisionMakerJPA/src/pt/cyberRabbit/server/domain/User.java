@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NoResultException;
 import javax.persistence.OneToMany;
 import javax.persistence.Query;
 import javax.persistence.Table;
@@ -129,27 +130,30 @@ public class User {
 	}
 
 	public static User findByUsername(String username) {
-		EntityManager em = ServerHelper.getInstance().getEntityManager();
-		// TypedQuery<User> query = em.createQuery(
-		// "SELECT e FROM User e WHERE e.username = :username",
-		// User.class);
-		// query.setParameter("username", username);
+		try {
+			EntityManager em = ServerHelper.getInstance().getEntityManager();
+			Query query = em
+					.createQuery("SELECT e FROM User e WHERE e.username = :username");
+			query.setParameter("username", username);
 
-		Query query = em
-				.createQuery("SELECT e FROM User e WHERE e.username = :username");
-		query.setParameter("username", username);
-
-		return (User) query.getSingleResult();
+			return (User) query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	public static User findByEmail(String email) {
-		EntityManager em = ServerHelper.getInstance().getEntityManager();
+		try {
+			EntityManager em = ServerHelper.getInstance().getEntityManager();
 
-		Query query = em
-				.createQuery("SELECT e FROM User e WHERE e.email = :email");
-		query.setParameter("email", email);
+			Query query = em
+					.createQuery("SELECT e FROM User e WHERE e.email = :email");
+			query.setParameter("email", email);
 
-		return (User) query.getSingleResult();
+			return (User) query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	public UserDTO buildDTO() {

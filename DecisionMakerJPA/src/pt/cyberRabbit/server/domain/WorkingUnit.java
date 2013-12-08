@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.Table;
 
@@ -73,17 +74,22 @@ public class WorkingUnit {
 	}
 
 	public static WorkingUnit findByAcronym(String acronym) {
-		EntityManager em = ServerHelper.getInstance().getEntityManager();
+		try {
+			EntityManager em = ServerHelper.getInstance().getEntityManager();
 
-		Query query = em
-				.createQuery("SELECT e FROM WorkingUnit e WHERE e.acronym = :acronym");
-		query.setParameter("acronym", acronym);
+			Query query = em
+					.createQuery("SELECT e FROM WorkingUnit e WHERE e.acronym = :acronym");
+			query.setParameter("acronym", acronym);
 
-		return (WorkingUnit) query.getSingleResult();
+			return (WorkingUnit) query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	public WorkingUnitDTO buildDTO() {
-		WorkingUnitDTO workingUnit = new WorkingUnitDTO(getId(), getAcronym(), getName(), getHierarchy());
+		WorkingUnitDTO workingUnit = new WorkingUnitDTO(getId(), getAcronym(),
+				getName(), getHierarchy());
 		return workingUnit;
 	}
 }
