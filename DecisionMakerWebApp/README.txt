@@ -96,3 +96,13 @@ Internal Exception: java.sql.SQLException: No suitable driver found for jdbc:mys
 2- Garantir que as credenciais de acesso à BD são válidas. Basta as credenciais estarem errada para dar esta mensagem que induz em erro. 
 
 
+# ===============================================
+# Directórios do TOMCAT
+# ===============================================
+This is the default Tomcat home page. It can be found on the local filesystem at:
+	/var/lib/tomcat7/webapps/ROOT/index.html
+
+Tomcat7 veterans might be pleased to learn that this system instance of Tomcat is installed with 
+	CATALINA_HOME in /usr/share/tomcat7
+	CATALINA_BASE in /var/lib/tomcat7
+following the rules from /usr/share/doc/tomcat7-common/RUNNING.txt.gz
