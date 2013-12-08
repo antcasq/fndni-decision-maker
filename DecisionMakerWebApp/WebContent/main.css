@@ -110,6 +110,11 @@ input[type="button"],input[type="submit"] {
 	padding:2px;
 }
 
+.adminInfo {
+	color: red;
+	font-style:italic;
+}
+
 h1 {
 	font: 14pt Arial, Helvetica, sans-serif;
 	font-weight: bold;

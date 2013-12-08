@@ -21,6 +21,9 @@
 	<jsp:include page="actionNavbar.jsp" />
 
 	<div id="body_content">
+		<h2>
+			<fmt:message key='title.inquiry.status.summary' />
+		</h2>
 		<table cellpadding="0" cellspacing="0">
 			<thead>
 				<tr>
@@ -41,11 +44,15 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
 
-	<c:if test="${userBean.isAdmin}">
-		<hr />
-		<div id="body_content">
+		<c:if test="${userBean.isAdmin}">
+			<br />
+			<br />
+			<hr />
+			<span class="adminInfo"><fmt:message key='message.info.admin.feature' /></span>
+			<h2>
+				<fmt:message key='title.inquiry.status.by.workingUnit' />
+			</h2>
 			<table cellpadding="0" cellspacing="0">
 				<thead>
 					<tr>
@@ -73,9 +80,13 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
-		<hr />
-		<div id="body_content">
+			<br />
+			<br />
+			<hr />
+			<span class="adminInfo"><fmt:message key='message.info.admin.feature' /></span>
+			<h2>
+				<fmt:message key='title.inquiry.status.by.employee' />
+			</h2>
 			<table cellpadding="0" cellspacing="0">
 				<thead>
 					<tr>
@@ -98,8 +109,8 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
-	</c:if>
+		</c:if>
+	</div>
 	<jsp:include page="footer.jsp" />
 </body>
 </html>
