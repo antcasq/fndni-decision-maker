@@ -21,26 +21,28 @@
 
 	<jsp:include page="actionNavbar.jsp" />
 
-<div id="body_content">
-	<table cellpadding="0" cellspacing="0">
-		<thead>
-			<tr>
-				<th><fmt:message key="label.user.name" /></th>
-				<th><fmt:message key="label.workingUnit.name" /></th>
-				<th><fmt:message key="label.workingUnit.acronym" /></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="user" items="${users}">
+	<div id="body_content">
+		<table cellpadding="0" cellspacing="0">
+			<thead>
 				<tr>
-					<td>${user.name}</td>
-					<td>${user.workingUnit.name}</td>
-					<td>${user.workingUnit.acronym}</td>
+					<th><fmt:message key="label.user.name" /></th>
+					<th><fmt:message key="label.workingUnit.name" /></th>
+					<th><fmt:message key="label.workingUnit.acronym" /></th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-</div>
-<jsp:include page="footer.jsp" />
+			</thead>
+			<tbody>
+				<c:forEach var="user" items="${users}">
+					<tr>
+						<td>${user.name}</td>
+						<td>${user.workingUnit.name}</td>
+						<td>${user.workingUnit.acronym}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<hr />
+		<fmt:message key="message.info.hr.based.data" />
+	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
