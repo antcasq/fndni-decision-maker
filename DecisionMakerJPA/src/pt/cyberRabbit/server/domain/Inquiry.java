@@ -291,6 +291,10 @@ public class Inquiry {
 	}
 
 	public InquiryResultSummaryDTO getInquiryResult() {
+		if (!Boolean.TRUE.equals(getResultPublished())) {
+			throw new DomainException("error.inquiry.result.not.yet.published");
+		}
+
 		// Check if the inquiry response period is open
 		if (isOpen()) {
 			throw new DomainException(
