@@ -1,4 +1,4 @@
-I,0001,Disney anos 80,2013-11-15 10:00:01,2013-12-10 17:00:10,true,false
+I,0001,Disney anos 80,2013-12-08 10:00:01,2013-12-12 14:00:00,true,false
 Q,Qual a tua personagem Disney favorita dos anos 80?,logo-Disney.png
 A,Rato Mickey,mickeyMouse.png
 A,Minnie,minnieMouse.png
@@ -10,9 +10,9 @@ A,Prof. Pardal,gyroGearloose.png
 A,Pluto,pluto.png
 A,Voto branco,blankVote.png
 A,Voto nulo,invalidVote.png
-I,0002,Reitor,2013-12-12 10:00:00,2013-12-12 17:00:00,true,false
+I,0002,Reitor,2013-12-12 14:30:00,2013-12-12 17:30:00,true,false
 Q,Quem deve ser o próximo Reitor?,rectorElection.png
-A,Luís Reto,luisReto.png
-A,Eduarda Barroso,eduardaBarroso.png
+A,Person1,person1.png
+A,Person2,person2.png
 A,Voto branco,blankVote.png
 A,Voto nulo,invalidVote.png
