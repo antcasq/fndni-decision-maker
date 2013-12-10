@@ -315,9 +315,23 @@ public class Inquiry {
 		return result;
 	}
 
+	private boolean isBeforeBeginning() {
+		final Date now = new Date();
+		if (now.before(getBeginDate())) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public void publishResult() {
 		if (Boolean.TRUE.equals(getResultPublished())) {
 			throw new DomainException("error.inquiry.result.already.published");
+		}
+		
+		if (isBeforeBeginning()) {
+			throw new DomainException(
+					"error.inquiry.period.has.not.open.yet");
 		}
 
 		// Check if the inquiry response period is open
