@@ -26,16 +26,16 @@
 			<thead>
 				<tr>
 					<th><fmt:message key="label.user.name" /></th>
-					<th><fmt:message key="label.workingUnit.name" /></th>
-					<th><fmt:message key="label.workingUnit.acronym" /></th>
+<%-- 					<th><fmt:message key="label.workingUnit.name" /></th> --%>
+<%-- 					<th><fmt:message key="label.workingUnit.acronym" /></th> --%>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="user" items="${users}">
 					<tr>
 						<td>${user.name}</td>
-						<td>${user.workingUnit.name}</td>
-						<td>${user.workingUnit.acronym}</td>
+<%-- 						<td>${user.workingUnit.name}</td> --%>
+<%-- 						<td>${user.workingUnit.acronym}</td> --%>
 					</tr>
 				</c:forEach>
 			</tbody>
